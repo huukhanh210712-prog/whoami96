@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WHO AM I – Lắng nghe trái tim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff3ef;--fg:#2a1520;--mu:#7d5f68;--card:#fff;--line:#f0d6d4;--ac:#e8456b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#170d14;--fg:#fdeee9;--mu:#c6a6ae;--card:#26161f;--line:#4a2f3b;--ac:#ff5d7e}}
+:root[data-theme="dark"]{--bg:#170d14;--fg:#fdeee9;--mu:#c6a6ae;--card:#26161f;--line:#4a2f3b;--ac:#ff5d7e}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(120% 60% at 50% 0,color-mix(in srgb,var(--ac) 24%,transparent),transparent 70%) no-repeat,var(--bg);color:var(--fg);font:400 clamp(16px,2.2vw,19px)/1.6 "Be Vietnam Pro",system-ui,sans-serif;transition:background .6s}
+#app{max-width:760px;margin:0 auto;padding:16px 20px 56px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.2;margin:0}
+h1{font-size:clamp(32px,7vw,52px);font-weight:800}
+h2{font-size:clamp(24px,4.6vw,34px);font-weight:600}
+h3{font-size:20px;font-weight:600;margin-bottom:10px}
+p{margin:0 0 14px}
+.mu{color:var(--mu);font-size:.9em}
+.hw{display:grid;place-items:center;padding:8px 0 16px}
+.heart{width:clamp(96px,22vw,150px);overflow:visible;transform-origin:50% 55%;animation:beat 1.5s ease-in-out infinite;transition:width .5s}
+body[data-s=s-w] .heart{width:clamp(150px,36vw,230px)}
+.bg{fill:color-mix(in srgb,var(--ac) 14%,transparent)}
+.liq{fill:var(--ac);transition:transform .9s cubic-bezier(.3,.7,.2,1),fill .6s}
+.out{fill:none;stroke:var(--ac);stroke-width:3;stroke-linejoin:round}
+@keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.08)}28%{transform:scale(1)}42%{transform:scale(1.05)}70%{transform:scale(1)}}
+.screen{display:none}.screen.active{display:block;animation:in .45s ease}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.tc{text-align:center}
+.btn,.opt,.lnk{font:inherit;cursor:pointer;color:inherit}
+.btn{background:var(--ac);color:#1a0d12;border:0;border-radius:999px;padding:16px 34px;font-weight:700;font-size:1.05em;min-height:56px;margin:8px 6px 0;transition:filter .2s,transform .2s}
+.btn:hover{filter:brightness(1.08)}.btn:active{transform:scale(.97)}
+.btn.sec{background:transparent;color:var(--fg);border:2px solid var(--line)}
+.lnk{background:none;border:0;padding:10px 4px;color:var(--mu);min-height:44px}
+.bar-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.opts{display:grid;gap:12px;margin-top:22px}
+.opt{width:100%;text-align:left;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px 20px;min-height:64px;transition:border-color .2s,background .2s,transform .2s}
+.opt:hover{border-color:var(--ac)}.opt:active{transform:scale(.99)}
+.opt.sel{border-color:var(--ac);background:color-mix(in srgb,var(--ac) 22%,var(--card))}
+:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+textarea{width:100%;min-height:120px;margin-top:18px;padding:16px;font:inherit;color:var(--fg);background:var(--card);border:2px solid var(--line);border-radius:18px;resize:vertical}
+.sec-b{border-top:1px solid var(--line);margin-top:28px;padding-top:22px}
+.big{font-size:56px;line-height:1}
+.bars{display:grid;gap:10px}
+.bar{display:grid;grid-template-columns:minmax(110px,150px) 1fr 40px;gap:10px;align-items:center;font-size:.92em}
+.bar i{height:12px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar i b{display:block;height:100%;border-radius:99px;width:0;transition:width 1s ease}
+.bar em{font-style:normal;color:var(--mu);text-align:right}
+ul{margin:0;padding-left:1.2em}li{margin-bottom:8px}
+blockquote{margin:0;padding:6px 0 6px 18px;border-left:4px solid var(--ac);font-family:Fraunces,Georgia,serif;font-size:1.25em;overflow-wrap:anywhere}
+@media(max-width:480px){.bar{grid-template-columns:100px 1fr 34px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body data-s="s-w">
+<main id="app">
+<div class="hw">
+<svg class="heart" viewBox="0 0 100 92" aria-hidden="true">
+<defs><path id="hp" d="M50 88C14 60 2 36 14 18 24 5 42 6 50 22 58 6 76 5 86 18 98 36 86 60 50 88Z"/><clipPath id="hc"><use href="#hp"/></clipPath></defs>
+<use href="#hp" class="bg"/><g clip-path="url(#hc)"><rect id="liq" class="liq" x="0" y="92" width="100" height="92"/></g><use href="#hp" class="out"/>
+</svg>
+</div>
+
+<section id="s-w" class="screen active tc">
+<h1>Đặt tay lên ngực. Bạn nghe thấy gì?</h1>
+<p style="margin-top:18px">Trạm Lắng nghe trái tim cùng bạn gọi tên những điểm mạnh đang đập trong con người bạn. Hãy trả lời 8 câu hỏi bằng trực giác: ở đây không có đáp án đúng hay sai.</p>
+<button class="btn" id="go">Bắt đầu lắng nghe</button>
+<p class="mu" style="margin-top:22px">Khoảng 2 phút. Triển lãm WHO AM I.</p>
+</section>
+
+<section id="s-q" class="screen">
+<div class="bar-top"><button class="lnk" id="bk">‹ Quay lại</button><span class="mu" id="qn"></span></div>
+<h2 id="qt"></h2>
+<div class="opts" id="opts"></div>
+</section>
+
+<section id="s-n" class="screen">
+<div class="bar-top"><button class="lnk" id="bk2">‹ Quay lại</button><span class="mu">Câu cuối</span></div>
+<h2>Bạn muốn nói gì với chính mình lúc này?</h2>
+<p class="mu" style="margin-top:10px">Viết một lời nhắn ngắn. Lời nhắn sẽ xuất hiện trong kết quả của bạn. Bạn có thể bỏ trống.</p>
+<textarea id="note" maxlength="90" placeholder="Ví dụ: Mình sẽ dám thử nhiều hơn."></textarea>
+<div class="tc"><button class="btn" id="see">Xem điểm mạnh của tôi</button></div>
+</section>
+
+<section id="s-r" class="screen">
+<div class="tc"><div class="big" id="rE"></div><h1 id="rT" style="margin-top:10px"></h1><p id="rL" style="margin-top:14px"></p></div>
+<p id="rD"></p>
+<div class="sec-b"><h3>Bản đồ điểm mạnh của bạn</h3><div class="bars" id="rB"></div></div>
+<div class="sec-b"><h3>Hướng đi có thể hợp với bạn</h3><ul id="rP"></ul></div>
+<div class="sec-b"><h3>Lời khuyên từ trái tim</h3><ul id="rA"></ul></div>
+<div class="sec-b"><h3>Điều cần để ý</h3><p id="rW"></p></div>
+<div class="sec-b" id="rN" hidden><h3>Lời nhắn của chính bạn</h3><blockquote id="rNq"></blockquote></div>
+<div class="tc sec-b"><button class="btn sec" id="again">Làm lại từ đầu</button>
+<p class="mu" style="margin-top:16px">Kết quả mang tính gợi mở để bạn hiểu mình hơn, không thay thế đánh giá của chuyên gia. Màn hình sẽ tự quay về đầu sau vài phút không thao tác.</p></div>
+</section>
+</main>
+
+<script>
+const Q=[
+{q:"Có một buổi chiều rảnh bất ngờ. Bạn muốn làm gì nhất?",o:[["Vẽ, viết hoặc làm ra thứ gì đó của riêng mình","S"],["Gặp bạn bè và trò chuyện thật lâu","E"],["Rủ mọi người cùng làm một việc thú vị","L"],["Đến một nơi mình chưa từng đến","X"]]},
+{q:"Khi một người bạn gặp rắc rối, bạn thường là người…",o:[["Lắng nghe và ở bên cạnh","E"],["Tìm xem nguyên nhân gốc nằm ở đâu","A"],["Đứng ra điều phối, chia việc để giải quyết","L"],["Nghĩ ra một cách làm bất ngờ","S"]]},
+{q:"Một bài toán khó mãi chưa giải được. Bạn sẽ…",o:[["Chia nhỏ, làm từng bước đến khi xong","P"],["Tìm một cách tiếp cận hoàn toàn mới","S"],["Thử nhiều hướng và học từ những lần sai","X"],["Tìm hiểu kỹ nguyên lý rồi mới làm","A"]]},
+{q:"Điều khiến bạn tự hào nhất ở bản thân là…",o:[["Mình không bỏ cuộc dù rất mệt","P"],["Mình hiểu được cảm xúc của người khác","E"],["Mình dám thử điều mới","X"],["Mình khiến mọi người tin và cùng đi","L"]]},
+{q:"Trong một nhóm, bạn tự nhiên nhận vai trò nào?",o:[["Người nêu ý tưởng","S"],["Người giữ cho cả nhóm gắn kết","E"],["Người kiểm tra chi tiết, giữ chất lượng","A"],["Người dẫn dắt hướng đi","L"]]},
+{q:"Kế hoạch thay đổi đột ngột. Phản ứng đầu tiên của bạn là…",o:[["Hào hứng, như bắt đầu một cuộc phiêu lưu","X"],["Giữ bình tĩnh và bám vào kế hoạch","P"],["Quan sát, thu thập thông tin trước","A"],["Hỏi han để mọi người thấy yên tâm","E"]]},
+{q:"Bạn thấy mình “sống đúng” nhất khi…",o:[["Tạo ra điều gì đó đẹp hoặc mới","S"],["Giúp một người thấy nhẹ lòng hơn","E"],["Giải xong một bài toán hóc búa","A"],["Cán đích một mục tiêu dài hơi","P"]]},
+{q:"Nếu được trao một sứ mệnh, bạn muốn…",o:[["Truyền cảm hứng cho cả cộng đồng","L"],["Khám phá điều chưa ai biết","X"],["Xây nên một thứ bền vững theo năm tháng","P"],["Tìm lời giải cho một vấn đề lớn","A"]]}
+];
+const D={
+S:{l:"Sáng tạo",e:"🎨",c:"#ff7a59",t:"Người kiến tạo ý tưởng",d:"Bạn nhìn thấy khả năng ở nơi người khác chỉ thấy giới hạn. Trí tưởng tượng và cảm quan thẩm mỹ giúp bạn biến điều chưa có thành điều có thật.",p:["Thiết kế, truyền thông, nghệ thuật số","Khởi nghiệp, phát triển sản phẩm sáng tạo","Viết lách, làm phim, âm nhạc"],a:["Ghi lại mọi ý tưởng, kể cả những ý tưởng nghe có vẻ kỳ lạ.","Mỗi tuần hoàn thiện một sản phẩm nhỏ thay vì chờ sự hoàn hảo.","Tìm một người đồng hành giỏi thực thi để ý tưởng chạm đất."],w:"Bạn dễ chán khi ý tưởng không còn mới. Hãy tập đi nốt đoạn đường cuối."},
+E:{l:"Thấu cảm",e:"💗",c:"#ec4a7b",t:"Người kết nối trái tim",d:"Bạn đọc được điều người khác không nói thành lời. Sự tinh tế và chân thành khiến mọi người thấy an toàn khi ở cạnh bạn.",p:["Tâm lý học, công tác xã hội, tham vấn","Giáo dục, chăm sóc sức khỏe","Nhân sự, chăm sóc khách hàng, tổ chức cộng đồng"],a:["Dành thời gian nạp lại năng lượng cho mình trước khi giúp người khác.","Tập nói “không” một cách dịu dàng để giữ ranh giới của bạn.","Chia sẻ cảm xúc của chính bạn với một người bạn tin."],w:"Bạn dễ ôm lấy cảm xúc của người khác. Bạn đồng hành được, nhưng không cần gánh thay họ."},
+L:{l:"Dẫn dắt",e:"🧭",c:"#f2b134",t:"Người dẫn đường",d:"Bạn nhìn ra đích đến và khiến người khác muốn cùng đi. Sự quyết đoán và niềm tin của bạn tạo động lực cho cả nhóm.",p:["Quản lý dự án, kinh doanh, khởi nghiệp","Hoạt động đoàn hội, tổ chức sự kiện, truyền thông","Chính sách công, giáo dục, tổ chức phi lợi nhuận"],a:["Lắng nghe trước khi quyết định: người dẫn đường giỏi giúp người khác tỏa sáng.","Nhận một vai trò nhỏ để luyện tập, như trưởng nhóm học tập hay một câu lạc bộ.","Học cách trao quyền và tin tưởng đồng đội."],w:"Bạn dễ ôm việc vào mình. Hãy nhớ rằng đi cùng nhau thì đi được xa hơn."},
+A:{l:"Phân tích",e:"🔍",c:"#4a8fe7",t:"Người giải mã",d:"Bạn thích hiểu vấn đề đến tận gốc. Tư duy logic và sự tỉ mỉ giúp bạn tìm ra quy luật ở nơi người khác chỉ thấy hỗn độn.",p:["Khoa học dữ liệu, kỹ thuật, công nghệ thông tin","Nghiên cứu, y khoa, tài chính","Kiểm toán, phân tích kinh doanh, an ninh mạng"],a:["Biến câu hỏi “tại sao” thành một dự án: chọn một chủ đề và tự nghiên cứu sâu.","Tập kể kết quả bằng ngôn ngữ giản dị để người khác cũng hiểu.","Đặt hạn chót cho việc phân tích để kịp bắt tay vào làm."],w:"Bạn dễ phân tích quá lâu. Nhiều khi có 80% thông tin là đủ để bắt đầu."},
+P:{l:"Kiên trì",e:"🌱",c:"#3fb27f",t:"Người gieo trồng bền bỉ",d:"Bạn không dễ bỏ cuộc. Kỷ luật, sự đều đặn và quyết tâm giúp bạn đi đến cùng những chặng đường dài.",p:["Kỹ thuật, y khoa, nghiên cứu dài hạn","Thể thao, nghề thủ công, nghệ nhân","Quản trị vận hành, kế toán, xây dựng"],a:["Chia mục tiêu lớn thành các cột mốc nhỏ và tự thưởng khi chạm từng mốc.","Cho phép mình nghỉ ngơi: bền bỉ không có nghĩa là không được mệt.","Thỉnh thoảng thử một cách làm khác để giữ sự linh hoạt."],w:"Bạn dễ cứng nhắc khi kế hoạch đổi thay. Hãy luyện thêm sự mềm mại."},
+X:{l:"Khám phá",e:"🚀",c:"#9b6bf0",t:"Người khai phá",d:"Bạn tò mò và dám bước ra khỏi vùng quen thuộc. Sự linh hoạt giúp bạn thích nghi nhanh trước mọi thay đổi.",p:["Du lịch, báo chí, nghiên cứu thực địa","Công nghệ mới, khởi nghiệp, tiếp thị","Quan hệ quốc tế, môi trường, sáng tạo nội dung"],a:["Mỗi tháng thử một điều chưa từng làm: một kỹ năng, một nơi, một cộng đồng.","Chọn một lĩnh vực để đào sâu, để sự tò mò kết thành chuyên môn.","Ghi nhật ký hành trình để thấy mình đã đi được bao xa."],w:"Bạn dễ bắt đầu nhiều mà dừng sớm. Hãy chọn ra điều đáng đi tiếp."}
+};
+const $=s=>document.querySelector(s);
+let Q2,i=0,ans=[],busy=false,tm;
+const shuf=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
+const go=id=>{document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active",s.id===id));document.body.dataset.s=id;window.scrollTo(0,0)};
+const fill=p=>{$("#liq").style.transform="translateY("+(-p*92)+"px)"};
+function ask(){
+ const q=Q2[i],box=$("#opts");
+ $("#qn").textContent="Câu "+(i+1)+" trên "+Q2.length;$("#qt").textContent=q.q;
+ $("#bk").style.visibility=i?"visible":"hidden";box.innerHTML="";
+ q.o.forEach(([t,k])=>{const b=document.createElement("button");b.className="opt"+(ans[i]===k?" sel":"");b.textContent=t;
+  b.onclick=()=>{if(busy)return;busy=true;ans[i]=k;box.querySelectorAll(".opt").forEach(x=>x.classList.remove("sel"));b.classList.add("sel");setTimeout(next,300)};
+  box.appendChild(b)});
+ fill(i/(Q2.length+1));
+}
+function next(){busy=false;if(i<Q2.length-1){i++;ask();go("s-q")}else{fill(Q2.length/(Q2.length+1));go("s-n")}}
+function start(){i=0;ans=[];Q2=Q.map(q=>({q:q.q,o:shuf(q.o)}));ask();go("s-q")}
+function result(){
+ const sc={S:0,E:0,L:0,A:0,P:0,X:0};ans.forEach(k=>sc[k]++);
+ const r=Object.keys(sc).sort((a,b)=>sc[b]-sc[a]),t=D[r[0]],s=D[r[1]],max=sc[r[0]]||1;
+ document.documentElement.style.setProperty("--ac",t.c);fill(1);
+ $("#rE").textContent=t.e;$("#rT").textContent=t.t;
+ $("#rL").innerHTML="Trái tim bạn đập mạnh nhất ở <b>"+t.l+"</b> và ngân vang cùng <b>"+s.l+"</b>.";
+ $("#rD").textContent=t.d;
+ $("#rB").innerHTML=r.map(k=>'<div class="bar"><span>'+D[k].e+" "+D[k].l+'</span><i><b data-w="'+Math.round(sc[k]/max*100)+'" style="background:'+D[k].c+'"></b></i><em>'+sc[k]+"/"+Q.length+"</em></div>").join("");
+ $("#rP").innerHTML=t.p.map(x=>"<li>"+x+"</li>").join("")+"<li>Nếu muốn pha thêm chất "+s.l+": "+s.p[0].toLowerCase()+"</li>";
+ $("#rA").innerHTML=t.a.map(x=>"<li>"+x+"</li>").join("");
+ $("#rW").textContent=t.w;
+ const n=$("#note").value.trim();$("#rN").hidden=!n;$("#rNq").textContent=n;
+ go("s-r");
+ setTimeout(()=>document.querySelectorAll("#rB b").forEach(b=>b.style.width=b.dataset.w+"%"),150);
+}
+function reset(){document.documentElement.style.removeProperty("--ac");fill(0);$("#note").value="";go("s-w")}
+function bump(){clearTimeout(tm);tm=setTimeout(()=>{if(document.body.dataset.s!=="s-w")reset()},150000)}
+$("#go").onclick=start;
+$("#bk").onclick=()=>{busy=false;if(i>0){i--;ask()}};
+$("#bk2").onclick=()=>{i=Q2.length-1;ask();go("s-q")};
+$("#see").onclick=result;
+$("#again").onclick=reset;
+["pointerdown","keydown"].forEach(e=>addEventListener(e,bump));bump();
+</script>
+</body>
+</html>
